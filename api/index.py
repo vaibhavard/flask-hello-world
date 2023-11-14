@@ -16,3 +16,7 @@ def execute():
         print(e)
         return {"Error":str(e)}
     return data
+
+@app.route('/')
+def home():
+    return 'Hello, World!'
