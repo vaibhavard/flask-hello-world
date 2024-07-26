@@ -498,3 +498,8 @@ def autoresponder():
         ]}
 
     return response
+
+@app.route('/')
+def yellow_name():
+   return f'Server is OK'
+
