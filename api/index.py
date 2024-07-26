@@ -2,7 +2,7 @@
 
 from flask import Flask, request, jsonify
 from openai import OpenAI
-client = OpenAI(base_url="https://opengpt-4ik5.onrender.com/v1")
+client = OpenAI(base_url="https://opengpt-4ik5.onrender.com/v1",api_key="AIzaSyB1KjzRH35j7Ag6sRcS-ej2oXeg1xKY0cU")
 app = Flask(__name__)
 import time
 prompt="""
