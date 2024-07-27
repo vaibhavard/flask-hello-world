@@ -421,20 +421,7 @@ chat_session = model.start_chat(
       "parts": [
         "sure bro \n",
       ],
-    },
-    {
-      "role": "user",
-      "parts": [
-        "jayesh ke kitne marks aaye?\n",
-      ],
-    },
-    {
-      "role": "model",
-      "parts": [
-        "Jayesh ke 477 aaye! 🤯\n",
-      ],
-    },
-  ]
+    }]
 )
 
 
@@ -471,14 +458,14 @@ def autoresponder():
         is_test_message = data['query'].get('isTestMessage', False)
 
         # Process messages here
-        # message=message+[{"role": "user", "content": "[Always stay in character as vaibhav , giving short answers in hinglish]\n"+msg},]
-        # completion = client.chat.completions.create(
-        # model="gpt-4-0125-preview",
-        # messages=message
-        # )
-        # reply=str(completion.choices[0].message.content)
-        # message=message+[{"role": "assistant", "content": reply},]
-        response = chat_session.send_message(msg)
+        message=message+[{"role": "user", "content": "[Always stay in character as vaibhav , giving short answers in hinglish]\n"+msg},]
+        completion = client.chat.completions.create(
+        model="gpt-4-0125-preview",
+        messages=message
+        )
+        reply=str(completion.choices[0].message.content)
+        message=message+[{"role": "assistant", "content": reply},]
+        #response = chat_session.send_message(msg)
 
         print("replied")
         # print(reply)
@@ -486,7 +473,7 @@ def autoresponder():
         response.status_code = 200
 
         # Send one or multiple replies to AutoResponder
-        response = {"replies":  [{"message":  response.text},]}
+        response = {"replies":  [{"message":  reply},]}
 
     else: 
         # Set response code - 400 bad request
